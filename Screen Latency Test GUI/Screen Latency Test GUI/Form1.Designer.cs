@@ -33,7 +33,7 @@
             // 
             // sendSerialData_Btn
             // 
-            this.sendSerialData_Btn.Location = new System.Drawing.Point(713, 12);
+            this.sendSerialData_Btn.Location = new System.Drawing.Point(12, 12);
             this.sendSerialData_Btn.Name = "sendSerialData_Btn";
             this.sendSerialData_Btn.Size = new System.Drawing.Size(75, 23);
             this.sendSerialData_Btn.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1904, 1041);
+            this.ClientSize = new System.Drawing.Size(238, 85);
             this.Controls.Add(this.sendSerialData_Btn);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

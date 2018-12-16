@@ -22,7 +22,7 @@ void loop() {
       {
           reset = 1;
           t0 = micros();
-          Serial.println(1);
+          Serial.print(1);
           while(true)
           {
             int val = analogRead(14);
@@ -32,7 +32,7 @@ void loop() {
             {
                 t1 = micros();
                 t1 = t1 - t0;
-                Serial.println(t1);
+                Serial.print(t1);
                 break;
             }
           }

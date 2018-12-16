@@ -16,6 +16,7 @@ namespace Screen_Latency_Test_GUI
     {
         AsyncSerial comPort;
         Stopwatch sw = new Stopwatch();
+        bool waitForSerial = true;
 
         public Form1()
         {
@@ -24,7 +25,7 @@ namespace Screen_Latency_Test_GUI
 
         private void setupPort()
         {
-            string portName = "COM3";
+            string portName = "COM4";
             int portBaud = 2000000;
             string portParity = "none";
             int portData = 8;
@@ -55,13 +56,19 @@ namespace Screen_Latency_Test_GUI
         {
             byte[] packet = e.Packet();
             //string supplyMessage = Encoding.Default.GetString(packet); //Conver to string if needed
-            sw.Stop();
             //WINFORM EXAMPLE
-            this.Invoke((MethodInvoker)delegate
+            if (waitForSerial)
             {
-                MessageBox.Show("Time = " + sw.Elapsed.TotalMilliseconds.ToString());
-                sw.Reset();
-            });
+                this.BackColor = Color.Black;
+                waitForSerial = false;
+            }
+            else
+            {
+                this.Invoke((MethodInvoker)delegate
+                {
+                    MessageBox.Show("Time = " + System.Text.Encoding.Default.GetString(packet));
+                });
+            }
         }
 
         private void sendSerialData()
@@ -80,15 +87,22 @@ namespace Screen_Latency_Test_GUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            this.BackColor = Color.White;
             setupPort();
             MessageBox.Show("Port Open");
         }
 
         private void sendSerialData_Btn_Click(object sender, EventArgs e)
         {
-            sw.Start();
-            this.BackColor = Color.Black;
-            sendSerialData();
+            if(waitForSerial)
+            {
+
+            }
+            else
+            {
+                waitForSerial = true;
+                this.BackColor = Color.White;
+            }
         }
     }
 }
